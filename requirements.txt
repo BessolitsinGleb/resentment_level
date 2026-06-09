@@ -1,6 +1,6 @@
 python-telegram-bot==20.7
 anyio==3.7.1
 gdown
-pytorch
+torch
 transformers
 python-dotenv
