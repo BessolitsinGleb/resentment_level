@@ -31,7 +31,7 @@ def download_model():
 
    print("Скачиваем модель с Google Drive...")
    url = GDRIVE_FILE_ID
-   gdown.download(url, MODEL_PATH, quiet=False)
+   gdown.download(url=url, output=MODEL_PATH, quiet=False, fuzzy=True)
    print(f"✓ Модель скачана: {MODEL_PATH}")
 
 class OffenceRegressor(nn.Module):
