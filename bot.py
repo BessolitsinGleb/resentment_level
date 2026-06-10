@@ -18,8 +18,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TELEGRAM_TOKEN   = os.getenv("TG_TOKEN")
-GDRIVE_FILE_ID   = os.getenv("URL_TO_MODEL")
+TELEGRAM_TOKEN   = os.getenv("TELEGRAM_TOKEN")
+GDRIVE_FILE_ID   = os.getenv("GDDRIVE_FILE_ID")
 MODEL_PATH       = "offence_model.pkl"
 DEVICE           = "cpu"
 WAITING_MESSAGE  = 1  
