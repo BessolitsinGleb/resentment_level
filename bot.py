@@ -25,14 +25,22 @@ DEVICE           = "cpu"
 WAITING_MESSAGE  = 1  
 
 def download_model():
-   if os.path.exists(MODEL_PATH):
-       print(f"✓ Модель уже есть: {MODEL_PATH}")
-       return
+    if os.path.exists(MODEL_PATH):
+        print(f"✓ Модель уже есть: {MODEL_PATH}")
+        return
 
-   print("Скачиваем модель с Google Drive...")
-   url = GDRIVE_FILE_ID
-   gdown.download(url=url, output=MODEL_PATH, quiet=False, fuzzy=True)
-   print(f"✓ Модель скачана: {MODEL_PATH}")
+    full_url = os.getenv("GD_DRIVE_FILE")
+    print(f"DEBUG url='{full_url}'")
+
+    if not full_url:
+        raise ValueError("GD_DRIVE_FILE не найден в переменных окружения")
+
+    # Вытаскиваем FILE_ID из ссылки вида:
+    # https://drive.google.com/file/d/FILE_ID/view
+    file_id = full_url.split("/d/")[1].split("/")[0]
+    print(f"DEBUG file_id='{file_id}'")
+
+    gdown.download(id=file_id, output=MODEL_PATH, quiet=False)
 
 class OffenceRegressor(nn.Module):
    def __init__(self, model_name: str, dropout: float = 0.1):
