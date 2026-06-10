@@ -29,11 +29,11 @@ def download_model():
         print(f"✓ Модель уже есть: {MODEL_PATH}")
         return
 
-    full_url = os.getenv("GD_DRIVE_FILE")
+    full_url = os.getenv("GDRIVE_FILE_ID")
     print(f"DEBUG url='{full_url}'")
 
     if not full_url:
-        raise ValueError("GD_DRIVE_FILE не найден в переменных окружения")
+        raise ValueError("GDRIVE_FILE_ID не найден в переменных окружения")
 
     # Вытаскиваем FILE_ID из ссылки вида:
     # https://drive.google.com/file/d/FILE_ID/view
